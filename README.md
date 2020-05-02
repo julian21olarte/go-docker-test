@@ -21,7 +21,7 @@ Little repo using go + go modules, docker, docker-compose, mongoDB and live relo
 ## Build
 
 ```
-1. If you update the projecto source code, you can rebuild and deploy executing `docker-compose up --build`
+1. If you update the project source code, you can rebuild and deploy executing `docker-compose up --build`
 ```
 
 
