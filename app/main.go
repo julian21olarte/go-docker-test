@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"app/main/db"
 	"app/main/controllers"
 	"net/http"
@@ -18,5 +19,5 @@ func main() {
 
 	e.GET("/users/create", controllers.CreateUser)
 	e.GET("/users", controllers.GetUsers)
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
 }

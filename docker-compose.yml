@@ -8,13 +8,14 @@ services:
     container_name: golang-docker
     env_file: .env
     environment:
+      - PORT=$PORT
       - MONGO_USERNAME=$MONGO_USERNAME
       - MONGO_PASSWORD=$MONGO_PASSWORD
       - MONGO_HOSTNAME=db
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
     ports:
-      - "3001:3001"
+      - "$PORT:$PORT"
     depends_on: 
       - db
     volumes:
