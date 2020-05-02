@@ -37,9 +37,7 @@ func GetUsers(c echo.Context) error {
 // CreateUser func
 func CreateUser(c echo.Context) error {
 	user := models.User{}
-	println("12345")
 	err := c.Bind(&user)
-	println("finish")
 	if err != nil {
 		c.Logger().Error(err)
 	}
