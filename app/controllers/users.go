@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"app/main/models"
 	"app/main/db"
 	"context"
 	"net/http"
@@ -13,7 +14,7 @@ const usersCollection = "users"
 
 // GetUsers func
 func GetUsers(c echo.Context) error {
-	users := []map[string]interface{}{}
+	users := []models.User{}
 	if db.MongoClient != nil {
 		cursor, err := db.MongoClient.
 			Database(db.MongoDatabase).
@@ -35,18 +36,21 @@ func GetUsers(c echo.Context) error {
 
 // CreateUser func
 func CreateUser(c echo.Context) error {
-	user := map[string]interface{}{
-		"name":  c.QueryParam("name"),
-		"age":   c.QueryParam("age"),
-		"phone": c.QueryParam("phone"),
+	user := models.User{}
+	println("12345")
+	err := c.Bind(&user)
+	println("finish")
+	if err != nil {
+		c.Logger().Error(err)
 	}
+
 	if db.MongoClient != nil {
 		_, err := db.MongoClient.
 			Database(db.MongoDatabase).
 			Collection(usersCollection).
 			InsertOne(context.TODO(), user)
 		if err != nil {
-			c.Error(err)
+			c.Logger().Error(err)
 		}
 
 		return c.JSON(http.StatusOK, "ok")
