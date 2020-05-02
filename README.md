@@ -36,7 +36,7 @@ Little repo using go + go modules, docker, docker-compose, mongoDB and live relo
 
 > Example url request - Next url request:
 ```
-    /users/create?name=Julian&age=25&phone=123456
+    /users/create?name=Julian&age=25&phone=123456&email=julian@docker.com
 ```
 > Will create the next user:
 ```
