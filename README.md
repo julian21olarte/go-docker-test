@@ -27,10 +27,23 @@ Little repo using go + go modules, docker, docker-compose, mongoDB and live relo
 
 ## Endpoints
 
-> [GET] `/users` fetch users in DB.
+> [GET] `/v1/users` fetch users in DB.
 > List all users in a DB.
 
-> [GET] `/users/create` create a new user in DB.
+> [POST] `/v1/users` create a new user in DB.
+> Create a new user in DB
+```
+    // Example request
+    {
+        "id": "5eada85d8a5e99345f372350",
+        "name": "Julian",
+        "age": 25,
+        "phone": "123456"
+        "email": "julian@docker.com"
+    }
+```
+
+> [GET] `/v1/users/create` create a new user in DB.
 > Create a new user in DB
 > Pass user info in query params
 

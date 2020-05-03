@@ -19,7 +19,6 @@ func SetupMongo() {
 	port := os.Getenv("MONGO_PORT")
 	username := os.Getenv("MONGO_USERNAME")
 	pass := url.QueryEscape(os.Getenv("MONGO_PASSWORD"))
-	// DB := os.Getenv("MONGO_DB")
 
 	clientOpts := options.Client().ApplyURI(fmt.Sprintf("mongodb://%s:%s@%s:%s", username, pass, host, port))
 	client, err := mongo.Connect(context.TODO(), clientOpts)

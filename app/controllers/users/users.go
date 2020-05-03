@@ -1,8 +1,8 @@
-package controllers
+package users
 
 import (
-	"app/main/models"
 	"app/main/db"
+	"app/main/models"
 	"context"
 	"net/http"
 
@@ -11,6 +11,13 @@ import (
 )
 
 const usersCollection = "users"
+
+// Routes func
+func Routes(e *echo.Group) {
+	e.GET("/users", GetUsers)
+	e.GET("/users/create", CreateUser)
+	e.POST("/users", CreateUser)
+}
 
 // GetUsers func
 func GetUsers(c echo.Context) error {

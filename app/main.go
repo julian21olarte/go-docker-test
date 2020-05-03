@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
+	"app/main/controllers/users"
 	"app/main/db"
-	"app/main/controllers"
 	"net/http"
+	"os"
 
 	"github.com/labstack/echo/v4"
 )
@@ -16,8 +16,8 @@ func main() {
 		return c.String(http.StatusOK, "Hello, World3 edited!")
 	})
 
-	e.GET("/users", controllers.GetUsers)
-	e.GET("/users/create", controllers.CreateUser)
-	e.POST("/users", controllers.CreateUser)
+	v1 := e.Group("/v1")
+	users.Routes(v1)
+
 	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
 }
